@@ -6,7 +6,7 @@ Simple Nautilus plugin to open a reverse Google image search page in the default
 
 ### Arch Linux
 
-Install `nautilus-search-by-image` from AUR.
+Install `nautilus-search-by-image-git` from AUR.
 
 ### Manual
 
