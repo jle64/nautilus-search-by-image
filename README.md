@@ -1,4 +1,4 @@
-# Reverse Google image search for Nautilus
+# Reverse image search for Nautilus
 
 Nautilus plugin that adds contextual menu entries on image files to do a reverse image search on them using Google or Yandex.
 
