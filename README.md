@@ -1,6 +1,6 @@
 # Reverse image search for Nautilus
 
-Nautilus plugin that adds contextual menu entries on image files to do a reverse image search on them using Google or Yandex.
+Nautilus plugin that adds contextual menu entries on image files to do a reverse image search on them using ~~Google~~ (broken) or Yandex.
 
 ![Sreencapture](screencapture.png)
 
@@ -12,7 +12,7 @@ Install `nautilus-search-by-image-git` from AUR.
 
 ### Manual
 
-Install the `python-nautilus` and `python-requests` packages.
+Install the `python-nautilus` or `nautilus-python` and `python-requests` packages.
 
 Place the search-by-image.py file in the nautilus-python user or system directory and restart Nautilus.
 

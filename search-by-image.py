@@ -6,12 +6,7 @@ gi.require_version("Gio", "2.0")
 gi.require_version("GObject", "2.0")
 from gi.repository import GObject, Gio
 
-if "nemo" in sys.argv[0].lower():
-    gi.require_version("Nemo", "3.0")
-    from gi.repository import Nemo as FileManager
-else:
-    gi.require_version("Nautilus", "3.0")
-    from gi.repository import Nautilus as FileManager
+from gi.repository import Nautilus
 
 SEARCH_URLS = {
     "Google": "https://www.google.com/searchbyimage?&image_url=",
@@ -20,7 +15,7 @@ SEARCH_URLS = {
 UPLOAD_URL = "https://transfer.sh/image"
 
 
-class SearchByImageExtension(GObject.GObject, FileManager.MenuProvider):
+class SearchByImageExtension(GObject.GObject, Nautilus.MenuProvider):
     def _search_image(self, menu, nfile, engine):
         # Get Gio.File from NautilusVFSFile
         gfile = Gio.File.new_for_uri(nfile.get_uri())
@@ -34,7 +29,7 @@ class SearchByImageExtension(GObject.GObject, FileManager.MenuProvider):
         uploaded_url = r.text.strip()
         Gio.AppInfo.launch_default_for_uri(SEARCH_URLS[engine] + uploaded_url, None)
 
-    def get_file_items(self, window, files):
+    def get_file_items(self, files):
         if len(files) != 1:
             return
 
@@ -46,14 +41,14 @@ class SearchByImageExtension(GObject.GObject, FileManager.MenuProvider):
         if nfile.get_mime_type().split("/")[0] != "image":
             return
 
-        menu = FileManager.MenuItem(
+        menu = Nautilus.MenuItem(
             name="SearchByImageExtension::Engines", label="Search by image"
         )
 
-        submenu = FileManager.Menu()
+        submenu = Nautilus.Menu()
         menu.set_submenu(submenu)
         for engine in SEARCH_URLS.keys():
-            item = FileManager.MenuItem(
+            item = Nautilus.MenuItem(
                 name=f"SearchByImageExtension::{engine}",
                 label=f"Search image on {engine}",
                 tip=f"Use {engine} reverse image search on {nfile.get_name()}",
@@ -63,5 +58,5 @@ class SearchByImageExtension(GObject.GObject, FileManager.MenuProvider):
 
         return (menu,)
 
-    def get_background_items(self, window, nfile):
+    def get_background_items(self, nfile):
         return
