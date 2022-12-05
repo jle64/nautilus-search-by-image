@@ -9,7 +9,6 @@ from gi.repository import GObject, Gio
 from gi.repository import Nautilus
 
 SEARCH_URLS = {
-    "Google": "https://www.google.com/searchbyimage?&image_url=",
     "Yandex": "https://yandex.com/images/search?rpt=imageview&url=",
 }
 UPLOAD_URL = "https://transfer.sh/image"
