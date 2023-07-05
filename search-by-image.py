@@ -10,6 +10,7 @@ from gi.repository import Nautilus
 
 SEARCH_URLS = {
     "Yandex": "https://yandex.com/images/search?rpt=imageview&url=",
+    "Google": "https://lens.google.com/uploadbyurl?url="
 }
 UPLOAD_URL = "https://transfer.sh/image"
 
